@@ -1,11 +1,11 @@
-﻿<Window x:Class="ProductShop.MainWindow"
+﻿<Window x:Class="ProductShop.Windows.CartWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProductShop"
+        xmlns:local="clr-namespace:ProductShop.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1024">
+        Title="CartWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -17,19 +17,11 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnCart"
-                Grid.Column="1"
-                Width="100"
-                Content="Cart"
-                FontSize="22"
-                HorizontalAlignment="Right"
-                Click="BtnCart_Click"/>
-
         <ListView x:Name="LvProduct"
                   Grid.Row="1"
                   Grid.Column="1"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  d:ItemsSource="{d:SampleData ItemCount=5}">
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -56,18 +48,18 @@
                                        FontWeight="Bold"/>
                             <TextBlock Text="{Binding Price}"/>
 
-                            <Button x:Name="BtnAddToCart" 
-                                    Width="50"
-                                    Height="50"
-                                    HorizontalAlignment="Right"
-                                    Content="+"
-                                    FontSize="30"
-                                    Click="BtnAddToCart_Click"/>
+                            <TextBlock
+                                x:Name="TbCountDish" 
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Right"
+                                Text="{Binding Count}"
+                                FontSize="30"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-      
+
     </Grid>
 </Window>
